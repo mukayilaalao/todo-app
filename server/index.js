@@ -8,6 +8,10 @@ const cors = require("cors");
 app.use(cors());
 app.use(express.json());
 
+app.get("/", (req, res) => {
+  res.json("Hello, welcome to the backend!");
+});
+
 // get all todos
 app.get("/api/todos", async (req, res) => {
   try {
@@ -67,6 +71,6 @@ app.put("/api/todos/:id", async (req, res) => {
   }
 });
 
-app.listen(5000, () => {
-  console.log("Listening on port 5000");
+app.listen(5555, () => {
+  console.log("Listening on port 5555");
 });
