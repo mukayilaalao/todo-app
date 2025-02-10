@@ -2,22 +2,20 @@ import { Fragment, useState } from "react";
 
 function Edit({ todo }) {
   const [todoToUpdate, setUpdate] = useState(todo.todo);
+  const api = process.env.REACT_APP_API;
   const handleChange = (e) => {
     setUpdate(e.target.value);
   };
   const handleSave = async () => {
     try {
       const body = { todo: todoToUpdate };
-      const response = await fetch(
-        `http://localhost:5000/api/todos/${todo.todo_id}`,
-        {
-          method: "PUT",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(body),
-        }
-      );
+      const response = await fetch(`${api}/todos/${todo.todo_id}`, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(body),
+      });
       const data = await response.json();
-      console.log(data);
+      // console.log(data);
       window.location = "/";
     } catch (err) {
       console.log(err);

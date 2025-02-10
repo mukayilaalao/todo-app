@@ -4,8 +4,9 @@ import "./TodoList.css";
 
 function TodoList() {
   const [todos, setTodos] = useState([]);
+  const api = process.env.REACT_APP_API;
   const getTodos = async () => {
-    const response = await fetch("http://localhost:5000/api/todos");
+    const response = await fetch(`${api}/todos`);
     const todos = await response.json();
     setTodos(todos);
   };
@@ -14,11 +15,11 @@ function TodoList() {
   }, []);
   const handleDelete = async (id) => {
     try {
-      const response = await fetch(`http://localhost:5000/api/todos/${id}`, {
+      const response = await fetch(`${api}/todos/${id}`, {
         method: "DELETE",
       });
       const data = await response.json();
-      console.log(data);
+      // console.log(data);
       window.location = "/";
     } catch (err) {
       console.log(err);
