@@ -2,6 +2,7 @@ const express = require("express");
 const app = express();
 const pool = require("./db");
 const cors = require("cors");
+const port = process.env.PORT;
 
 //middleware
 
@@ -71,6 +72,6 @@ app.put("/api/todos/:id", async (req, res) => {
   }
 });
 
-app.listen(5555, () => {
-  console.log("Listening on port 5555");
+app.listen(port, () => {
+  console.log(`Listening on port ${port}`);
 });
