@@ -1,4 +1,4 @@
-CREATE DATABASE my_todos;
+-- CREATE DATABASE my_todos;
 
 CREATE TABLE todos(
     todo_id SERIAL PRIMARY KEY,
