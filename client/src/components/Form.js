@@ -7,7 +7,8 @@ function Form() {
     setUserTodo(e.target.value);
   };
   const handleSubmit = async (e) => {
-    e.preventDefault();
+    // refresh does help here
+    // e.preventDefault();
     try {
       const body = { todo: userTodo };
       const todoPost = await fetch(`${api}/todos`, {
@@ -15,8 +16,6 @@ function Form() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(body),
       });
-      setUserTodo("");
-      // console.log(todoPost.json());
     } catch (err) {
       console.log(err);
     }
